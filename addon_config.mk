@@ -140,11 +140,14 @@ linux:
 	ADDON_LDFLAGS = -lsnappy
 
 osx:
-	ADDON_LDFLAGS = -rpath @loader_path/../../../../../../../addons/ofxHapPlayer/libs
+	ADDON_LDFLAGS = -L/opt/homebrew/lib -lavformat -lavcodec -lavutil -lswresample -lsnappy
+	ADDON_LIBS_EXCLUDE = libs/ffmpeg
+	ADDON_LIBS_EXCLUDE += libs/snappy
 	ADDON_INCLUDES_EXCLUDE = libs/ffmpeg/include/libavformat
 	ADDON_INCLUDES_EXCLUDE += libs/ffmpeg/include/libavutil
 	ADDON_INCLUDES_EXCLUDE += libs/ffmpeg/include/libavcodec
 	ADDON_INCLUDES_EXCLUDE += libs/ffmpeg/include/libswresample
+	ADDON_INCLUDES_EXCLUDE += libs/snappy/include
 
 vs:
 	ADDON_LIBS += bcrypt.lib
